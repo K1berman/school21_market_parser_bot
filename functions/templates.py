@@ -1,0 +1,1 @@
+CATALOG_REQUEST_URL = "https://applicant.21-school.ru/api/v3/shop/products?categories_ids=%5B{}%5D"
