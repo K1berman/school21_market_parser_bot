@@ -1,14 +1,14 @@
 from functions.config import TOKEN
 from aiogram import Bot, Dispatcher
 from bot_logic.handlers import router
+from bot_logic.buttons import call_back_router
 import asyncio
 
-async def main():
+async def main() -> None:
 
     bot = Bot(token=TOKEN)
     dispatcher = Dispatcher()
-    dispatcher.include_router(router)
-
+    dispatcher.include_routers(router, call_back_router)
     await bot.send_message(chat_id="693186551", text="Бот запущен!")
 
     await dispatcher.start_polling(bot)
