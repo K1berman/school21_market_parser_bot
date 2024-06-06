@@ -1,4 +1,5 @@
 from requests import get
+from .templates import PRODUCT
 
 
 def get_catalog(url: str, cookies: dict | None = None, header: dict | None = None) -> dict | None:
@@ -68,3 +69,11 @@ def get_catalog_info(catalog_info_not_sorted: dict) -> list[dict] | None:
 
     return catalog_info
 
+
+def print_catalog(catalog: list[dict]) -> tuple[list[str], list[str]]:
+    photos = []
+    formated_posts = []
+    for product in catalog:
+        formated_posts.append(PRODUCT.format(product.get("name"), product.get("price"), product.get("count")))
+        photos.append(product.get("images"))
+    return (formated_posts, photos)
